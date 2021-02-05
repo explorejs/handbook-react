@@ -34,5 +34,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": "14"
+  },
+  "volta": {
+    "node": "14.15.4"
   }
 }
