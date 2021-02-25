@@ -1,9 +1,20 @@
 import React from "react";
 
-export default function About() {
+const About = () => {
   return (
-    <div>
+    <div
+      style={{
+        alignItems: "center",
+        color: "black",
+        display: "flex",
+        fontFamily: "Lato",
+        justifyContent: "space-between",
+        padding: "1rem",
+      }}
+    >
       <h2>About</h2>
     </div>
   );
-}
+};
+
+export default About;
