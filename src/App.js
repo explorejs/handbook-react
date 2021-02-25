@@ -7,15 +7,20 @@ export default function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-          </ul>
+        <nav
+          style={{
+            alignItems: "center",
+            color: "black",
+            display: "flex",
+            fontFamily: "Lato",
+            justifyContent: "space-between",
+            padding: "1rem",
+          }}
+        >
+          <Link to="/">
+            <h2>Handbook.Dev</h2>
+          </Link>
+          <Link to="/about">About</Link>
         </nav>
         <Switch>
           <Route path="/about">
