@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-export default function Home() {
+export default function LearnMore({people}) {
+
   return (
     <div
       style={{
-        alignItems: "center",
+        alignItems: "left",
         color: "black",
         display: "flex",
         fontFamily: "Lato",
@@ -14,7 +14,11 @@ export default function Home() {
       }}
     >
       <h2>Handbook</h2>
-      <Link to="/learn-more">Learn More</Link>
+      <ul>
+        {people.map((person) => (
+          <li>{person.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
