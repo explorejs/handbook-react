@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test Footer renders correctly 1`] = `
+<footer
+  style={
+    Object {
+      "backgroundColor": "white",
+      "color": "black",
+      "display": "flex",
+      "justifyContent": "center",
+      "padding": "1rem 0",
+      "width": "100vw",
+    }
+  }
+>
+  <p
+    style={
+      Object {
+        "backgroundColor": undefined,
+        "color": "black",
+        "fontFamily": "Lato",
+        "fontSize": "1rem",
+      }
+    }
+  >
+    <span>
+       ExploreJS 
+    </span>
+    © 
+    2021
+  </p>
+</footer>
+`;

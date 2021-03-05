@@ -1,18 +1,16 @@
-
 import { render } from "@testing-library/react";
-import { BrowserRouter as Router, } from "react-router-dom";
-import Header from "../Header"
+import { BrowserRouter as Router } from "react-router-dom";
+import Header from "../components/layout/Header";
 
-test("If active show hi", () => {
-  const { getByText } = render( <Router><Header active /></Router>)
-  expect(getByText("hi")).toBeTruthy()
-});
+import THEME from "../theme.json";
 
-test("If not active dont show hi", () => {
-    const { queryByText } = render(<Router><Header  /></Router>)
-    expect(queryByText("hi")).toBeFalsy()
+describe("Header", () => {
+  test("has About link", () => {
+    const { getByText } = render(
+      <Router>
+        <Header theme={THEME["light"]} toggleTheme={jest.fn()} />
+      </Router>
+    );
+    expect(getByText("About")).toBeTruthy();
   });
-  
-
-
- 
+});

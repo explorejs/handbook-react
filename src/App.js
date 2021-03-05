@@ -1,19 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import LearnMore from "./pages/LearnMore";
-import Header from "./Header";
+import Body from "./components/layout/Body";
+import Footer from "./components/layout/Footer";
+import Header from "./components/layout/Header";
+import THEME from "./theme.json";
 
-export default function App() {
-  const [state, setState] = useState([]);
+const App = () => {
+  const [state, setState] = useState({
+    currentTheme: "light",
+    data: [],
+  });
+
+  const toggleTheme = () => {
+    setState((s) => ({
+      ...s,
+      currentTheme: state.currentTheme === "light" ? "dark" : "light",
+    }));
+  };
 
   const getData = async () => {
     try {
-      let data = await fetch("https://swapi.dev/api/people")
+      const serverUrl =
+        process.env.NODE_ENV === "production"
+          ? process.env.REACT_APP_SERVER_BASE_URL
+          : "http://localhost:8000";
+      const result = await fetch(`${serverUrl}/mongo`)
         .then((R) => R.json())
         .then((R) => R);
-      setState(data.results);
+      if (result && result.data) {
+        setState((s) => ({ ...s, data: result.data }));
+      }
     } catch (e) {
       console.error(e);
     }
@@ -22,38 +40,25 @@ export default function App() {
   useEffect(() => {
     getData();
   }, []);
+
+  const theme = THEME[state.currentTheme];
+
   return (
     <Router>
-      <div>
-        <nav
-          style={{
-            alignItems: "center",
-            color: "black",
-            display: "flex",
-            fontFamily: "Lato",
-            justifyContent: "space-between",
-            padding: "1rem",
-          }}
-        >
-          <Link to="/">
-            <h2>Handbook.Dev</h2>
-          </Link>
-          <Link to="/about">About</Link>
-        </nav>
-        <Header active />
-
+      <Header toggleTheme={toggleTheme} theme={theme} />
+      <Body theme={theme}>
         <Switch>
           <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/learn-more">
-            <LearnMore people={state} />
+            <About theme={theme} />
           </Route>
           <Route path="/">
-            <Home />
+            <Home data={state.data} theme={theme} />
           </Route>
         </Switch>
-      </div>
+      </Body>
+      <Footer theme={theme} />
     </Router>
   );
-}
+};
+
+export default App;
