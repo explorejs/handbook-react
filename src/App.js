@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import styled from 'styled-components'
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Body from "./components/layout/Body";
+import Main from "./components/layout/Main";
 import Footer from "./components/layout/Footer";
-import Header from "./components/layout/Header";
+// import Header from "./components/layout/Header";
+import SideHeader from "./components/layout/SideHeader"
 import THEME from "./theme.json";
 
 const App = () => {
@@ -43,20 +45,29 @@ const App = () => {
 
   const theme = THEME[state.currentTheme];
 
+  const DocumentBody = styled.body`
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+  `
+
   return (
     <Router>
-      <Header toggleTheme={toggleTheme} theme={theme} />
-      <Body theme={theme}>
-        <Switch>
-          <Route path="/about">
-            <About theme={theme} />
-          </Route>
-          <Route path="/">
-            <Home data={state.data} theme={theme} />
-          </Route>
-        </Switch>
-      </Body>
-      <Footer theme={theme} />
+      {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
+      <DocumentBody>
+        <SideHeader/>
+        <Main theme={theme}>
+          <Switch>
+            <Route path="/about">
+              <About theme={theme} />
+            </Route>
+            <Route path="/">
+              <Home data={state.data} theme={theme} />
+            </Route>
+          </Switch>
+        </Main>
+        {/* <Footer theme={theme} /> */}
+      </DocumentBody>
     </Router>
   );
 };
