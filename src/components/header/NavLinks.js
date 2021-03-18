@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import styled from 'styled-components'
 
@@ -48,27 +48,37 @@ const NavLinks = () => {
     return (
         <Container>
             <FirstBox>
-                <Link to="/">
+                {/* <Link to="/">
                     <LinkText>Home</LinkText>
-                </Link>
-                <Link to="/addnew">
+                </Link> */}
+
+                <NavLink exact to="/" activeStyle=
+                {{color: "#1A3B79"}}>
+                    <LinkText> Home </LinkText>
+                </NavLink>
+
+                <NavLink exact to="#">
                     <LinkText>Add New</LinkText>
-                </Link>
-                <Link to="/">
+                </NavLink>
+
+                <NavLink exact to="#">
                     <LinkText>Saved</LinkText>
-                </Link>
-                <Link to="/">
+                </NavLink>
+
+                <NavLink exact to="#">
                     <LinkText>Shared</LinkText>
-                </Link>
+                </NavLink>
             </FirstBox>
 
             <SecondBox>
-                <Link to="/">
-                    <LinkText>Sign Out</LinkText>
-                </Link>
-                <Link to="/About">
-                    <LinkText>About</LinkText>
-                </Link>
+                <NavLink exact to="#">
+                    <LinkText> Sign Out </LinkText>
+                </NavLink>
+
+                <NavLink exact to="/about" activeStyle=
+                {{color: "#1A3B79"}}>
+                    <LinkText> About </LinkText>
+                </NavLink>
             </SecondBox>
             
         </Container>

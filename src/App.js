@@ -45,7 +45,7 @@ const App = () => {
 
   const theme = THEME[state.currentTheme];
 
-  const DocumentBody = styled.body`
+  const DocumentBody = styled.div`
     display: flex;
     flex-direction: row;
     height: 100vh;

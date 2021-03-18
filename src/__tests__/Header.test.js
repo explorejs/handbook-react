@@ -5,7 +5,7 @@ import Header from "../components/layout/Header";
 import THEME from "../theme.json";
 
 describe("Header", () => {
-  test("has About link", () => {
+  test.skip("has About link", () => {
     const { getByText } = render(
       <Router>
         <Header theme={THEME["light"]} toggleTheme={jest.fn()} />
