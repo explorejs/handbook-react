@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Main from "./components/layout/Main";
+import Sidebar from "./components/layout/Sidebar";
+
 import Footer from "./components/layout/Footer";
 // import Header from "./components/layout/Header";
 import SideHeader from "./components/layout/SideHeader"
@@ -55,17 +57,18 @@ const App = () => {
     <Router>
       {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
       <DocumentBody>
-        <SideHeader/>
-        <Main theme={theme}>
-          <Switch>
-            <Route path="/about">
-              <About theme={theme} />
-            </Route>
-            <Route path="/">
-              <Home data={state.data} theme={theme} />
-            </Route>
-          </Switch>
-        </Main>
+        <SideHeader/> 
+          <Main theme={theme}>
+            <Switch>
+              <Route path="/about">
+                <About theme={theme} />
+              </Route>
+              <Route path="/">
+                <Home data={state.data} theme={theme} />
+              </Route>
+            </Switch>
+          </Main>
+          <Sidebar/> 
         {/* <Footer theme={theme} /> */}
       </DocumentBody>
     </Router>
