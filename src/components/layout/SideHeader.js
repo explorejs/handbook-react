@@ -6,12 +6,14 @@ import UserInfo from "../header/UserInfo"
 import NavLinks from "../header/NavLinks"
 import Copyright from "../header/Copyright"
 import ButtonLeft from "../header/ButtonLeft"
+import ModeToggle from "../header/ModeToggle"
 
 const SideNav = styled.nav`
     height: 100vh;
-    padding-top: ${props => props.theme.padding.large};
-    padding-bottom: ${props => props.theme.padding.small};
-    background-color: #FFFFFF;
+
+    padding-top: 4.5rem;
+    padding-bottom: 2rem;
+    background-color: ${props => props.theme.bgSide};
     
     display: flex;
     flex-direction: column;
@@ -26,6 +28,7 @@ const SideHeader = () => {
         <SideNav>
             <UserInfo />
             <NavLinks />
+            <ModeToggle/>
             <Copyright />
             <ButtonLeft />
         </SideNav>

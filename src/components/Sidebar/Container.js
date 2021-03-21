@@ -6,7 +6,7 @@ import StarImg from '../../images/star.svg';
 
 
 const StyledContainer = styled.div`
-    background-color: white;
+    background-color: ${props => props.theme.bgCard};
     border-radius: 16px;
     padding: 2rem 1rem 2rem 1rem;
     width: 14rem;
@@ -20,13 +20,16 @@ const StyledContainer = styled.div`
 `
 
 const UserBox = styled.div`
-    margin-top: ${props => props.theme.padding.xsmall}; 
+    margin-top: 1.4rem; 
     display: flex;
     flex-direction: row;
 `
+const StyledTitle = styled.h4`
+    color: ${props => props.theme.heading};
+`
 
 const UserImg = styled.img`
-    margin-right: ${props => props.theme.padding.xxsmall};
+    margin-right: 1rem;
     width: 30px;
     height: 28px;
     border-radius: 40px;    
@@ -35,7 +38,7 @@ const UserImg = styled.img`
 const UserName = styled.p`
     font-size: 12px;
     font-weight: 400;
-    color: rgba(0, 0, 0, 65%);
+    color: ${props => props.theme.mainText};
 `
 const PointsWrapper = styled.div`
     margin-bottom: 0.3rem;
@@ -45,7 +48,7 @@ const PointsWrapper = styled.div`
     justify-content: flex-start;
 `
 const PointsNum = styled.p`
-    color: rgba(0, 0, 0, 65%);
+    color: ${props => props.theme.mainText};
     font-size: 11px;
     font-weight: 400;
 `
@@ -59,7 +62,7 @@ const PointsImg = styled.img`
 const Container = ({title}) => {
     return (
         <StyledContainer>
-            <h4>{title}</h4>
+            <StyledTitle>{title}</StyledTitle>
             <UserBox>
                 <UserImg src={DefaultImg} />
                 <div>

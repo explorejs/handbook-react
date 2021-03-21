@@ -11,6 +11,10 @@ import Footer from "./components/layout/Footer";
 import SideHeader from "./components/layout/SideHeader"
 import THEME from "./theme.json";
 
+// Themes
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './theme/theme';
+
 const App = () => {
   const [state, setState] = useState({
     currentTheme: "light",
@@ -54,24 +58,26 @@ const App = () => {
   `
 
   return (
-    <Router>
-      {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
-      <DocumentBody>
-        <SideHeader/> 
-          <Main theme={theme}>
-            <Switch>
-              <Route path="/about">
-                <About theme={theme} />
-              </Route>
-              <Route path="/">
-                <Home data={state.data} theme={theme} />
-              </Route>
-            </Switch>
-          </Main>
-          <Sidebar/> 
-        {/* <Footer theme={theme} /> */}
-      </DocumentBody>
-    </Router>
+    <ThemeProvider theme={lightTheme}>
+      <Router>
+        {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
+        <DocumentBody>
+          <SideHeader/> 
+            <Main theme={theme}>
+              <Switch>
+                <Route path="/about">
+                  <About theme={theme} />
+                </Route>
+                <Route path="/">
+                  <Home data={state.data} theme={theme} />
+                </Route>
+              </Switch>
+            </Main>
+            <Sidebar/> 
+          {/* <Footer theme={theme} /> */}
+        </DocumentBody>
+      </Router>
+    </ThemeProvider>
   );
 };
 

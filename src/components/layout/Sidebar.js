@@ -3,13 +3,12 @@ import styled from 'styled-components'
 import Container from '../Sidebar/Container'
 
 const Wrapper = styled.div`
-    padding: ${props => props.theme.padding.large} ${props => props.theme.padding.large} ${props => props.theme.padding.large} 0rem;
-    background-color: ${props => props.theme.colors.lightBg};
+    padding: 4.5rem 4.5rem 4.5rem 0rem;
+    background-color: ${props => props.theme.bgMain};
     display: flex;
     flex-direction: column;
 `
 
-// padding: ${props => props.theme.padding.large};
 
 const Sidebar = () => {
     return (
