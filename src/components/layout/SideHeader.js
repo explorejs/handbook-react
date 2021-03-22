@@ -23,12 +23,12 @@ const SideNav = styled.nav`
 
 `
 
-const SideHeader = () => {
+const SideHeader = ({toggleTheme}) => {
     return (
         <SideNav>
             <UserInfo />
             <NavLinks />
-            <ModeToggle/>
+            <ModeToggle toggleTheme={toggleTheme}/>
             <Copyright />
             <ButtonLeft />
         </SideNav>

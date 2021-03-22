@@ -17,14 +17,14 @@ import { lightTheme, darkTheme } from './theme/theme';
 
 const App = () => {
   const [state, setState] = useState({
-    currentTheme: "light",
+    currentTheme: lightTheme,
     data: [],
   });
 
   const toggleTheme = () => {
     setState((s) => ({
       ...s,
-      currentTheme: state.currentTheme === "light" ? "dark" : "light",
+      currentTheme: state.currentTheme === lightTheme ? darkTheme : lightTheme,
     }));
   };
 
@@ -62,7 +62,7 @@ const App = () => {
       <Router>
         {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
         <DocumentBody>
-          <SideHeader/> 
+          <SideHeader toggleTheme={toggleTheme}/> 
             <Main theme={theme}>
               <Switch>
                 <Route path="/about">
