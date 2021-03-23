@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import styled from 'styled-components'
-import Home from "./pages/Home";
+import styled from "styled-components";
+import { AuthProvider } from "../src/hooks/useAuth";
 import About from "./pages/About";
+import Home from "./pages/Home";
+import LogIn from "./pages/LogIn";
+import Register from "./pages/Register";
 import Main from "./components/layout/Main";
 import Footer from "./components/layout/Footer";
 // import Header from "./components/layout/Header";
-import SideHeader from "./components/layout/SideHeader"
+import SideHeader from "./components/layout/SideHeader";
 import THEME from "./theme.json";
 
 const App = () => {
@@ -49,26 +52,34 @@ const App = () => {
     display: flex;
     flex-direction: row;
     height: 100vh;
-  `
+  `;
 
   return (
-    <Router>
-      {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
-      <DocumentBody>
-        <SideHeader/>
-        <Main theme={theme}>
-          <Switch>
-            <Route path="/about">
-              <About theme={theme} />
-            </Route>
-            <Route path="/">
-              <Home data={state.data} theme={theme} />
-            </Route>
-          </Switch>
-        </Main>
-        {/* <Footer theme={theme} /> */}
-      </DocumentBody>
-    </Router>
+    <AuthProvider>
+      <Router>
+        {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
+        <DocumentBody>
+          <SideHeader />
+          <Main theme={theme}>
+            <Switch>
+              <Route path="/about">
+                <About theme={theme} />
+              </Route>
+              <Route path="/login">
+                <LogIn theme={theme} />
+              </Route>
+              <Route path="/register">
+                <Register theme={theme} />
+              </Route>
+              <Route path="/">
+                <Home data={state.data} theme={theme} />
+              </Route>
+            </Switch>
+          </Main>
+          {/* <Footer theme={theme} /> */}
+        </DocumentBody>
+      </Router>
+    </AuthProvider>
   );
 };
 
