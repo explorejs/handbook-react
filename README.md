@@ -31,6 +31,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://www.fortyonepixel.com/"><img src="https://avatars.githubusercontent.com/u/62621484?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anastasia</b></sub></a><br /><a href="https://github.com/ExploreJS/handbook-react/commits?author=anastasssia88" title="Code">💻</a></td>
+    <td align="center"><a href="https://nickfoden.com/"><img src="https://avatars.githubusercontent.com/u/8321838?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nick Foden</b></sub></a><br /><a href="https://github.com/ExploreJS/handbook-react/commits?author=NickFoden" title="Code">💻</a></td>
   </tr>
 </table>
 

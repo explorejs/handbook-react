@@ -18,6 +18,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "NickFoden",
+      "name": "Nick Foden",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8321838?v=4",
+      "profile": "https://nickfoden.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
