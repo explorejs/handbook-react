@@ -21,46 +21,37 @@ const StyledInput = styled.input`
     -webkit-transition: all 0.2s ease-in;  
     -moz-transition: all 0.2s ease-in;  
     -o-transition: all 0.2s ease-in; 
-    transition: all 0.2s ease-in;  
+    transition: all 0.3s ease-in;  
     
     &:checked {
-        /* background: ${props => props.theme.headingBlue}; */
-        background: lightblue;
+        background: #86A1D3;
     }
 
-    &::before {
+    &:before {
         content: '';
         position: absolute;
         width: 14px;
-        height: 14px;
-        right: 5px;
+        height: 12px;
+        right: ${props => props.theme.beforePosition};
         border-radius: 20px;
         background-color: white;
         transition: 2s;
         align-self: center;
+        transition: all 0.3s ease-in; 
     }
 
-    &:checked::before {
-        left: 5px;
-    }
+    /* &:checked:before {
+        right: 20px;
+    } */
 `
 
 const ModeToggle = ({toggleTheme}) => {
     return (
-        // <div>
-        //     {(props) => props.theme.bgSide === '#1B1B1B' ? (
-        //     <RiLightbulbFlashFill />
-        //     ) : (
-        //     <RiLightbulbFlashLine />
-        //     )}
-        // </div>
         <StyledDiv>
-            <StyledInput type="checkbox" name="checkbox" />
+            <StyledInput type="checkbox" name="checkbox" onChange = {() => toggleTheme()} />
         </StyledDiv>
         
     )
 }
 
-// onClick={() => toggleTheme()}
-// theme["background-color"] === "black"
 export default ModeToggle

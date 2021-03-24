@@ -15,6 +15,7 @@ import THEME from "./theme.json";
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './theme/theme';
 
+
 const App = () => {
   const [state, setState] = useState({
     currentTheme: lightTheme,
@@ -26,7 +27,9 @@ const App = () => {
       ...s,
       currentTheme: state.currentTheme === lightTheme ? darkTheme : lightTheme,
     }));
+    console.log("Checked")
   };
+
 
   const getData = async () => {
     try {
@@ -58,7 +61,7 @@ const App = () => {
   `
 
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={state.currentTheme}>
       <Router>
         {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
         <DocumentBody>

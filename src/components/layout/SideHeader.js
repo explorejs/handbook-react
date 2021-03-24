@@ -20,7 +20,6 @@ const SideNav = styled.nav`
     align-items: center;
     width: 40rem;
     box-shadow: 4px 2px 4px 11px rgba(0, 0, 0, 0.2);
-
 `
 
 const SideHeader = ({toggleTheme}) => {
