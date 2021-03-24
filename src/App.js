@@ -7,22 +7,29 @@ import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
 import Register from "./pages/Register";
 import Main from "./components/layout/Main";
+import Sidebar from "./components/layout/Sidebar";
+
 import Footer from "./components/layout/Footer";
 // import Header from "./components/layout/Header";
 import SideHeader from "./components/layout/SideHeader";
 import THEME from "./theme.json";
 
+// Themes
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./theme/theme";
+
 const App = () => {
   const [state, setState] = useState({
-    currentTheme: "light",
+    currentTheme: lightTheme,
     data: [],
   });
 
   const toggleTheme = () => {
     setState((s) => ({
       ...s,
-      currentTheme: state.currentTheme === "light" ? "dark" : "light",
+      currentTheme: state.currentTheme === lightTheme ? darkTheme : lightTheme,
     }));
+    console.log("Checked");
   };
 
   const getData = async () => {

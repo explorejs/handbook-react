@@ -1,4 +1,6 @@
 import React from "react";
+import styled from 'styled-components'
+
 
 // author: {name_first: "Yangshun", name_last: "Tay"}
 // cost: 0
@@ -9,16 +11,19 @@ import React from "react";
 // ts: "2021-02-06T23:36:56.596Z"
 // url: "https://github.com/yangshun/front-end-interview-handbook/blob/master/contents/en/javascript-questions.md"
 // _id
+
+const StyledLink = styled.a`
+  color: ${props => props.theme.mainText};
+`
 const ContentRow = ({ resource, theme }) => (
   <li key={resource._id} style={{ margin: "0.5rem 0" }}>
-    <a
+    <StyledLink
       href={resource.url}
       rel="noreferrer nofollow"
       target="_blank"
-      style={{ color: theme.color }}
     >
       {resource.title}
-    </a>
+    </StyledLink>
   </li>
 );
 

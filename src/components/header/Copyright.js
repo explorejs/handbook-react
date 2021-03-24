@@ -1,18 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Text = styled.p`
+const StyledText = styled.p`
 font-family: "Lato", sans-serif;
 font-size: 12px;
-color: rgba(0, 0, 0, 65%);
+color: ${props => props.theme.smallText};
 `
 
 
 const Copyright = () => {
     return (
-        <Text>
+        <StyledText>
             ExploreJS © 2021
-        </Text>
+        </StyledText>
     )
 }
 
