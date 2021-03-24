@@ -2,9 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import ContentRow from "../components/ContentRow";
 
+const Title = styled.h1`
+    color: ${props => props.theme.headingBlue};
+`
+
+
 const Home = ({ data, theme }) => (
   <div>
-    <h1>Handbook.Dev</h1>
+    <Title>Nick's Handbook</Title>
     {/* Search component with filtering & title search */}
     
     <ul>

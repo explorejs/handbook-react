@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import styled from 'styled-components'
 
 const Container = styled.div`
-    padding: ${ props => props.theme.padding.large};
+    padding: 4.5rem;
     display: flex;
     flex-direction: column;
     font-family: "Lato", sans-serif;
@@ -35,9 +35,14 @@ const LinkText = styled.p`
     font-family: "Lato", sans-serif;
     text-align: center;
     margin-top: 1.3rem;
+    color: ${props => props.theme.mainText};
 
     &:active {
-        color: #1A3B79;
+        color: ${props => props.theme.link};
+        font-weight: 500;
+    }
+    &:hover {
+        color: ${props => props.theme.link};
         font-weight: 500;
     }
 `
