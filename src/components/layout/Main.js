@@ -2,14 +2,14 @@ import React from "react";
 import styled from 'styled-components'
 
 const MainWrapper = styled.main`
-  padding: ${props => props.theme.padding.large};
-  background-color: #F5F8FA;
+  padding: 4.5rem;
+  background-color: ${props => props.theme.bgMain};
   width: 100%;
 `
-// const MainTitle = styled.h1`
-//   color: ${props => props.theme.colors.darkBlue};
+const StyledDiv = styled.div`
+  color: ${props => props.theme.mainText};
+`
 
-// `
 
 const Main = ({ children, theme }) => {
   return (
@@ -25,7 +25,7 @@ const Main = ({ children, theme }) => {
     //   {children}
     // </div>
     <MainWrapper>
-      <div>{children}</div>
+      <StyledDiv>{children}</StyledDiv>
       {/* search component here*/}
       {/* resources list view component here */}
     </MainWrapper>

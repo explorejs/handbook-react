@@ -18,16 +18,17 @@ const UserImg = styled.img`
 `;
 
 const Title = styled.h3`
-  margin-bottom: 0.3rem;
-`;
+    color: ${props => props.theme.heading};
+    margin-bottom: 0.3rem;
+`
 
 const UserStatus = styled.h5`
-  margin-bottom: 0.3rem;
-  margin-top: 0.6rem;
-  font-size: 12px;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 65%);
-`;
+    margin-bottom: 0.3rem;
+    margin-top: 0.6rem;
+    font-size: 12px;
+    font-weight: 400;
+    color: ${props => props.theme.smallText};
+`
 
 const PointsWrapper = styled.div`
   margin-bottom: 0.3rem;
@@ -37,10 +38,10 @@ const PointsWrapper = styled.div`
   justify-content: space-between;
 `;
 const PointsNum = styled.p`
-  color: rgba(0, 0, 0, 65%);
-  font-size: 11px;
-  font-weight: 400;
-`;
+    color: ${props => props.theme.smallText};
+    font-size: 11px;
+    font-weight: 400;
+`
 const PointsImg = styled.img`
   margin-right: 0.1rem;
   width: 12px;

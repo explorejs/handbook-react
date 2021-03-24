@@ -4,23 +4,32 @@ import styled from 'styled-components'
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Main from "./components/layout/Main";
+import Sidebar from "./components/layout/Sidebar";
+
 import Footer from "./components/layout/Footer";
 // import Header from "./components/layout/Header";
 import SideHeader from "./components/layout/SideHeader"
 import THEME from "./theme.json";
 
+// Themes
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './theme/theme';
+
+
 const App = () => {
   const [state, setState] = useState({
-    currentTheme: "light",
+    currentTheme: lightTheme,
     data: [],
   });
 
   const toggleTheme = () => {
     setState((s) => ({
       ...s,
-      currentTheme: state.currentTheme === "light" ? "dark" : "light",
+      currentTheme: state.currentTheme === lightTheme ? darkTheme : lightTheme,
     }));
+    console.log("Checked")
   };
+
 
   const getData = async () => {
     try {
@@ -52,23 +61,26 @@ const App = () => {
   `
 
   return (
-    <Router>
-      {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
-      <DocumentBody>
-        <SideHeader/>
-        <Main theme={theme}>
-          <Switch>
-            <Route path="/about">
-              <About theme={theme} />
-            </Route>
-            <Route path="/">
-              <Home data={state.data} theme={theme} />
-            </Route>
-          </Switch>
-        </Main>
-        {/* <Footer theme={theme} /> */}
-      </DocumentBody>
-    </Router>
+    <ThemeProvider theme={state.currentTheme}>
+      <Router>
+        {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
+        <DocumentBody>
+          <SideHeader toggleTheme={toggleTheme}/> 
+            <Main theme={theme}>
+              <Switch>
+                <Route path="/about">
+                  <About theme={theme} />
+                </Route>
+                <Route path="/">
+                  <Home data={state.data} theme={theme} />
+                </Route>
+              </Switch>
+            </Main>
+            <Sidebar/> 
+          {/* <Footer theme={theme} /> */}
+        </DocumentBody>
+      </Router>
+    </ThemeProvider>
   );
 };
 
