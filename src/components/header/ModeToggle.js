@@ -39,10 +39,6 @@ const StyledInput = styled.input`
         align-self: center;
         transition: all 0.3s ease-in; 
     }
-
-    /* &:checked:before {
-        right: 20px;
-    } */
 `
 
 const ModeToggle = ({toggleTheme}) => {
