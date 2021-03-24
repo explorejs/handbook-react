@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import ContentRow from "../components/ContentRow";
-import styled from 'styled-components'
 
 const Title = styled.h1`
     color: ${props => props.theme.headingBlue};
