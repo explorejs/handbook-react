@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import styled from 'styled-components'
-import Home from "./pages/Home";
+import styled from "styled-components";
+import { AuthProvider } from "../src/hooks/useAuth";
 import About from "./pages/About";
+import AddNew from "./pages/AddNew";
+import Home from "./pages/Home";
+import LogIn from "./pages/LogIn";
 import Register from "./pages/Register";
 import Main from "./components/layout/Main";
 import Sidebar from "./components/layout/Sidebar";
 
 import Footer from "./components/layout/Footer";
 // import Header from "./components/layout/Header";
-import SideHeader from "./components/layout/SideHeader"
+import SideHeader from "./components/layout/SideHeader";
 import THEME from "./theme.json";
 
 // Themes
-import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './theme/theme';
-
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./theme/theme";
 
 const App = () => {
   const [state, setState] = useState({
@@ -28,9 +30,8 @@ const App = () => {
       ...s,
       currentTheme: state.currentTheme === lightTheme ? darkTheme : lightTheme,
     }));
-    console.log("Checked")
+    console.log("Checked");
   };
-
 
   const getData = async () => {
     try {
@@ -51,7 +52,7 @@ const App = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [2]);
 
   const theme = THEME[state.currentTheme];
 
@@ -59,32 +60,37 @@ const App = () => {
     display: flex;
     flex-direction: row;
     height: 100vh;
-  `
+  `;
 
   return (
-    <ThemeProvider theme={state.currentTheme}>
+    <AuthProvider>
       <Router>
         {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
         <DocumentBody>
-          <SideHeader toggleTheme={toggleTheme}/> 
-            <Main theme={theme}>
-              <Switch>
-                <Route path="/about">
-                  <About theme={theme} />
-                </Route>
-                <Route path="/">
-                  <Home data={state.data} />
-                </Route>
-                <Route path="/register">
-                  <Register />
-                </Route>
-              </Switch>
-            </Main>
-            <Sidebar/> 
+          <SideHeader />
+          <Main theme={theme}>
+            <Switch>
+              <Route path="/about">
+                <About theme={theme} />
+              </Route>
+              <Route path="/login">
+                <LogIn theme={theme} />
+              </Route>
+              <Route path="/register">
+                <Register theme={theme} />
+              </Route>
+              <Route path="/add">
+                <AddNew data={state.data} theme={theme} />
+              </Route>
+              <Route path="/">
+                <Home data={state.data} theme={theme} />
+              </Route>
+            </Switch>
+          </Main>
           {/* <Footer theme={theme} /> */}
         </DocumentBody>
       </Router>
-    </ThemeProvider>
+    </AuthProvider>
   );
 };
 

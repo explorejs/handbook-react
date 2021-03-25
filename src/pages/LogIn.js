@@ -1,21 +1,8 @@
-<<<<<<< HEAD
-import React from 'react'
-
-const Register = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
-
-export default Register
-=======
 import React, { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 
-const RegisterPage = () => {
-  const { signOut, signUp, user } = useAuth();
+const LogIn = () => {
+  const { signOut, signIn, user } = useAuth();
   const [state, setState] = useState({ email: "", password: "", errMsg: "" });
 
   const handleChange = (e) => {
@@ -36,7 +23,7 @@ const RegisterPage = () => {
       setState((s) => ({ ...s, errMsg: "please enter a valid email" }));
     } else {
       try {
-        await signUp(state.email, state.password);
+        await signIn(state.email, state.password);
       } catch (e) {
         console.error(e);
         if (e.message) {
@@ -52,7 +39,7 @@ const RegisterPage = () => {
     console.log(user);
     return (
       <>
-        <h2>Register</h2>
+        <h2>Log In</h2>
         <p>Logged in !</p>
         <button onClick={signOut}>Log Out</button>
       </>
@@ -60,7 +47,7 @@ const RegisterPage = () => {
   }
   return (
     <>
-      <h2>Register</h2>
+      <h2>Log In</h2>
       <form
         style={{
           display: "flex",
@@ -89,11 +76,10 @@ const RegisterPage = () => {
             value={state.password}
           />
         </label>
-        <button style={{ width: "100px" }}>Register</button>
+        <button style={{ width: "100px" }}>Login</button>
       </form>
     </>
   );
 };
 
-export default RegisterPage;
->>>>>>> 2ceb091d54d709a95f1488cd13acb8e152df93c2
+export default LogIn;

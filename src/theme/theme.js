@@ -1,14 +1,14 @@
 export const lightTheme = {
-    heading: 'black',
-    headingBlue: '#1A3B79',
-    bgMain: '#F5F8FA',
-    bgSide: 'white',
-    bgCard: 'white',
-    mainText: 'rgba(0, 0, 0, 85%)',
-    smallText: 'rgba(0, 0, 0, 35%)',
-    link: '#1A3B79',
-    beforePosition: '5px',
-}
+  heading: "black",
+  headingBlue: "#1A3B79",
+  bgMain: "#F5F8FA",
+  bgSide: "white",
+  bgCard: "white",
+  mainText: "rgba(0, 0, 0, 85%)",
+  smallText: "rgba(0, 0, 0, 35%)",
+  link: "#1A3B79",
+  beforePosition: "5px",
+};
 
 export const darkTheme = {
     heading: 'white',
