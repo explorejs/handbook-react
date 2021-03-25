@@ -1,19 +1,3 @@
-// export const globalVars = {
-//     padding: {
-//         xlarge: '6rem',
-//         large: '4.5rem',
-// 		medium: '3rem',
-//         small: '2rem',
-//         xsmall: '1.4rem',
-//         xxsmall: '1rem'
-//     },
-
-//     mediaQueries: {
-// 		'below-7685': 'only screen and (max-width: 768px)'
-// 	}
-
-// }
-
 export const lightTheme = {
     heading: 'black',
     headingBlue: '#1A3B79',
@@ -37,3 +21,19 @@ export const darkTheme = {
     link: '#86A1D3',
     beforePosition: '20px',
 }
+
+// For reference 
+//export const globalVars = {
+//     padding: {
+//         xlarge: '6rem',
+//         large: '4.5rem',
+// 		medium: '3rem',
+//         small: '2rem',
+//         xsmall: '1.4rem',
+//         xxsmall: '1rem'
+//     },
+
+//     mediaQueries: {
+// 		'below-7685': 'only screen and (max-width: 768px)'
+// 	}
+// }
