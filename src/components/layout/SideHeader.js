@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import GlobalVars from '../../theme/theme'
 
 // Components
 import UserInfo from "../header/UserInfo"
@@ -19,7 +20,7 @@ const SideNav = styled.nav`
     flex-direction: column;
     align-items: center;
     width: 40rem;
-    box-shadow: 4px 2px 4px 11px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 10px 8px rgba(0, 0, 0, 1%);
 `
 
 const SideHeader = ({toggleTheme}) => {
