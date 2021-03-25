@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-const Register = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
-
-export default Register
-=======
 import React, { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 
@@ -96,4 +83,3 @@ const RegisterPage = () => {
 };
 
 export default RegisterPage;
->>>>>>> 2ceb091d54d709a95f1488cd13acb8e152df93c2
