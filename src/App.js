@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import { AuthProvider } from "../src/hooks/useAuth";
 import About from "./pages/About";
+import AddNew from "./pages/AddNew";
 import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
 import Register from "./pages/Register";
@@ -51,7 +52,7 @@ const App = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [2]);
 
   const theme = THEME[state.currentTheme];
 
@@ -77,6 +78,9 @@ const App = () => {
               </Route>
               <Route path="/register">
                 <Register theme={theme} />
+              </Route>
+              <Route path="/add">
+                <AddNew data={state.data} theme={theme} />
               </Route>
               <Route path="/">
                 <Home data={state.data} theme={theme} />
