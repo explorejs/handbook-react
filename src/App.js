@@ -66,29 +66,32 @@ const App = () => {
     <AuthProvider>
       <Router>
         {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
-        <DocumentBody>
-          <SideHeader />
-          <Main theme={theme}>
-            <Switch>
-              <Route path="/about">
-                <About theme={theme} />
-              </Route>
-              <Route path="/login">
-                <LogIn theme={theme} />
-              </Route>
-              <Route path="/register">
-                <Register theme={theme} />
-              </Route>
-              <Route path="/add">
-                <AddNew data={state.data} theme={theme} />
-              </Route>
-              <Route path="/">
-                <Home data={state.data} theme={theme} />
-              </Route>
-            </Switch>
-          </Main>
-          {/* <Footer theme={theme} /> */}
-        </DocumentBody>
+        <ThemeProvider theme={darkTheme}>
+          <DocumentBody>
+            <SideHeader />
+            <Main theme={theme}>
+              <Switch>
+                <Route path="/about">
+                  <About theme={theme} />
+                </Route>
+                <Route path="/login">
+                  <LogIn theme={theme} />
+                </Route>
+                <Route path="/register">
+                  <Register theme={theme} />
+                </Route>
+                <Route path="/add">
+                  <AddNew data={state.data} theme={theme} />
+                </Route>
+                <Route path="/">
+                  <Home data={state.data} theme={theme} />
+                </Route>
+              </Switch>
+            </Main>
+            <Sidebar />
+            {/* <Footer theme={theme} /> */}
+          </DocumentBody>
+          </ThemeProvider>
       </Router>
     </AuthProvider>
   );
