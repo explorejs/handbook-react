@@ -28,7 +28,7 @@ const SideHeader = ({toggleTheme}) => {
         <SideNav>
             <UserInfo />
             <NavLinks />
-            <ModeToggle toggleTheme={toggleTheme}/>
+            <ModeToggle toggleTheme={toggleTheme}/> 
             <Copyright />
             <ButtonLeft />
         </SideNav>
