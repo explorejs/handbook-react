@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 
+// Components
+import Heading1 from "../components/Heading1"
+
 const RegisterPage = () => {
   const { signOut, signUp, user } = useAuth();
   const [state, setState] = useState({ email: "", password: "", errMsg: "" });
@@ -47,7 +50,7 @@ const RegisterPage = () => {
   }
   return (
     <>
-      <h2>Register</h2>
+      <Heading1 content = {'Create an account'} />
       <form
         style={{
           display: "flex",

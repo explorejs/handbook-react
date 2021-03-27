@@ -29,7 +29,7 @@ const StyledInput = styled.input`
 
     &:before {
         content: '';
-        position: absolute;
+        position: absolute; 
         width: 14px;
         height: 12px;
         right: ${props => props.theme.beforePosition};
@@ -44,7 +44,7 @@ const StyledInput = styled.input`
 const ModeToggle = ({toggleTheme}) => {
     return (
         <StyledDiv>
-            <StyledInput type="checkbox" name="checkbox" onChange = {() => toggleTheme()} />
+            <StyledInput type="checkbox" name="checkbox" onChange = {() => toggleTheme()} /> 
         </StyledDiv>
         
     )
