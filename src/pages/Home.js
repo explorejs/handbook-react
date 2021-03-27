@@ -8,7 +8,7 @@ import Heading1 from "../components/Heading1"
 const Home = ({ data, theme }) => (
   <div>
     
-    <Heading1 content={"Handbook.Dev"}/>
+    <Heading1 content="Handbook.Dev" />
     {/* Search component with filtering & title search */}
 
     <ul>

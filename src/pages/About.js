@@ -1,15 +1,12 @@
 import React from "react";
 import styled from "styled-components"
 
-const Title = styled.h1`
-    color: ${props => props.theme.headingBlue};
-`   
+// Components
+import Heading1 from "../components/Heading1" 
 
 const About = () => {
   return (
-    <Title>
-      About
-    </Title>
+    <Heading1 content="About" />
   );
 };
 

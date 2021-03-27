@@ -51,7 +51,7 @@ const LogIn = () => {
   }
   return (
     <>
-      <Heading1 content = {'Log in to your account here'} />
+      <Heading1 content="Log in to your account here" />
       <form
         style={{
           display: "flex",

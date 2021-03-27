@@ -50,7 +50,7 @@ const RegisterPage = () => {
   }
   return (
     <>
-      <Heading1 content = {'Create an account'} />
+      <Heading1 content="Create an account" />
       <form
         style={{
           display: "flex",
