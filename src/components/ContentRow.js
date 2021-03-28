@@ -1,6 +1,6 @@
 import React from "react";
-import styled from 'styled-components'
-
+import styled from "styled-components";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 // author: {name_first: "Yangshun", name_last: "Tay"}
 // cost: 0
@@ -13,15 +13,18 @@ import styled from 'styled-components'
 // _id
 
 const StyledLink = styled.a`
-  color: ${props => props.theme.mainText};
-`
-const ContentRow = ({ resource, theme }) => (
+  color: ${(props) => props.theme.mainText};
+`;
+const ContentRow = ({ favorite, resource, theme, toggleFavorite }) => (
   <li key={resource._id} style={{ margin: "0.5rem 0" }}>
-    <StyledLink
-      href={resource.url}
-      rel="noreferrer nofollow"
-      target="_blank"
-    >
+    <span style={{ marginRight: "0.5rem" }}>
+      {favorite ? (
+        <AiFillStar onClick={() => toggleFavorite(resource._id)} />
+      ) : (
+        <AiOutlineStar onClick={() => toggleFavorite(resource._id)} />
+      )}
+    </span>
+    <StyledLink href={resource.url} rel="noreferrer nofollow" target="_blank">
       {resource.title}
     </StyledLink>
   </li>

@@ -15,7 +15,7 @@ const newRecord = {
   url: "www.google.com",
 };
 
-const AddNew = () => {
+const AddNew = ({ updateKey }) => {
   const [state, setState] = useState({
     title: "",
     author: "",
@@ -62,7 +62,20 @@ const AddNew = () => {
         .then((R) => R.json())
         .then((R) => R);
       if (result) {
+        updateKey();
         console.dir(result);
+        // TODO: Create a success view before resetting the form
+        setState({
+          title: "",
+          author: "",
+          name_first: "",
+          name_last: "",
+          desc: "",
+          cost: "",
+          status: "active",
+          tags: "",
+          url: "",
+        });
       }
     } catch (e) {
       console.error(e);

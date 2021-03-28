@@ -23,6 +23,7 @@ const App = () => {
   const [state, setState] = useState({
     currentTheme: lightTheme,
     data: [],
+    updateKey: 0,
   });
 
   const toggleTheme = () => {
@@ -31,6 +32,13 @@ const App = () => {
       currentTheme: state.currentTheme === lightTheme ? darkTheme : lightTheme,
     }));
     console.log("Checked");
+  };
+
+  const updateKey = () => {
+    setState((s) => ({
+      ...s,
+      updateKey: s.updateKey + 1,
+    }));
   };
 
   const getData = async () => {
@@ -52,7 +60,7 @@ const App = () => {
 
   useEffect(() => {
     getData();
-  }, [2]);
+  }, [state.updateKey]);
 
   const theme = THEME[state.currentTheme];
 
@@ -81,7 +89,11 @@ const App = () => {
                   <Register theme={theme} />
                 </Route>
                 <Route path="/add">
-                  <AddNew data={state.data} theme={theme} />
+                  <AddNew
+                    data={state.data}
+                    theme={theme}
+                    updateKey={updateKey}
+                  />
                 </Route>
                 <Route path="/">
                   <Home data={state.data} theme={theme} />
@@ -91,7 +103,7 @@ const App = () => {
             <Sidebar />
             {/* <Footer theme={theme} /> */}
           </DocumentBody>
-          </ThemeProvider>
+        </ThemeProvider>
       </Router>
     </AuthProvider>
   );
