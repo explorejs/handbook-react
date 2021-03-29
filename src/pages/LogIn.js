@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 
+// Components
+import Heading1 from "../components/Heading1"
+
+
 const LogIn = () => {
   const { signOut, signIn, user } = useAuth();
   const [state, setState] = useState({ email: "", password: "", errMsg: "" });
@@ -47,7 +51,7 @@ const LogIn = () => {
   }
   return (
     <>
-      <h2>Log In</h2>
+      <Heading1 content="Log in to your account here" />
       <form
         style={{
           display: "flex",
