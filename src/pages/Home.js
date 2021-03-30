@@ -1,22 +1,30 @@
 import React from "react";
-import styled from "styled-components";
+import { useAuth } from "../hooks/useAuth";
 
 // Components
 import ContentRow from "../components/ContentRow";
-import Heading1 from "../components/Heading1"
+import Heading1 from "../components/Heading1";
 
-const Home = ({ data, theme }) => (
-  <div>
-    
-    <Heading1 content="Handbook.Dev" />
-    {/* Search component with filtering & title search */}
-
-    <ul>
-      {data.map((resource) => (
-        <ContentRow resource={resource} key={resource._id} theme={theme} />
-      ))}
-    </ul>
-  </div>
-);
+const Home = ({ data, theme }) => {
+  const { profile, toggleFavorite } = useAuth();
+  const { favorites = {} } = profile;
+  return (
+    <div>
+      <Heading1 content="Handbook.Dev" />
+      {/* Search component with filtering & title search */}
+      <ul>
+        {data.map((resource) => (
+          <ContentRow
+            resource={resource}
+            key={resource._id}
+            theme={theme}
+            favorite={favorites[resource._id]}
+            toggleFavorite={toggleFavorite}
+          />
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default Home;

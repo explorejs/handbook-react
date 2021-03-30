@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { auth } from "../adapters/firebase";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 // Components
-import PrimaryBtn from '../components/PrimaryBtn'
-import Heading1 from '../components/Heading1'
+import PrimaryBtn from "../components/PrimaryBtn";
+import Heading1 from "../components/Heading1";
 
 const newRecord = {
   title: "some string",
@@ -22,34 +22,34 @@ const newRecord = {
 
 const StyledForm = styled.form`
   max-width: 35rem;
-`
+`;
 
 const FormWrapper = styled.div`
   margin: 2rem 0rem;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const StyledLabel = styled.label`
   display: none;
-`
+`;
 
 const StyledInput = styled.input`
   width: 100%;
   padding: 12px 12px;
   margin-top: 1rem;
-  background-color: ${props => props.theme.bgSide};
-  color: ${props => props.theme.mainText};
+  background-color: ${(props) => props.theme.bgSide};
+  color: ${(props) => props.theme.mainText};
   font-size: 14px;
   border: none;
   border-radius: 8px;
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 2%);
-`
+`;
 
 const InputCost = styled(StyledInput)`
   width: 5rem;
   margin-right: 0.9rem;
-`
+`;
 
 const StyledTextarea = styled.textarea`
   resize: none;
@@ -57,20 +57,20 @@ const StyledTextarea = styled.textarea`
   height: 13rem;
   padding: 12px 12px;
   margin-top: 1rem;
-  background-color: ${props => props.theme.bgSide};
-  color: ${props => props.theme.mainText};
+  background-color: ${(props) => props.theme.bgSide};
+  color: ${(props) => props.theme.mainText};
   border: none;
   font-size: 14px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 2%);
-`
+`;
 
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: row;
-`
+`;
 
-const AddNew = () => {
+const AddNew = ({ updateKey }) => {
   const [state, setState] = useState({
     title: "",
     author: "",
@@ -117,7 +117,20 @@ const AddNew = () => {
         .then((R) => R.json())
         .then((R) => R);
       if (result) {
+        updateKey();
         console.dir(result);
+        // TODO: Create a success view before resetting the form
+        setState({
+          title: "",
+          author: "",
+          name_first: "",
+          name_last: "",
+          desc: "",
+          cost: "",
+          status: "active",
+          tags: "",
+          url: "",
+        });
       }
     } catch (e) {
       console.error(e);
@@ -129,28 +142,32 @@ const AddNew = () => {
       <StyledForm onSubmit={handleSubmit}>
         <FormWrapper>
           <StyledLabel for="title">Title</StyledLabel>
-          <StyledInput name="title" value={state.title} placeholder="Title" onChange={handleChange}/>
+          <StyledInput
+            name="title"
+            value={state.title}
+            placeholder="Title"
+            onChange={handleChange}
+          />
 
           <StyledLabel for="name_first">Author's first name</StyledLabel>
-          <StyledInput 
-            name="name_first" 
-            value={state.name_first} 
-            placeholder="Author's first name" 
+          <StyledInput
+            name="name_first"
+            value={state.name_first}
+            placeholder="Author's first name"
             onChange={handleChange}
           />
 
           <StyledLabel for="name_last">Author's last name</StyledLabel>
           <StyledInput
-              name="name_last"
-              value={state.name_last}
-              placeholder="Author's last name"
-              onChange={handleChange}
-            />
+            name="name_last"
+            value={state.name_last}
+            placeholder="Author's last name"
+            onChange={handleChange}
+          />
 
           <StyledLabel for="desc">Description</StyledLabel>
-          <StyledTextarea name="desc" placeholder="Description..."/>
+          <StyledTextarea name="desc" placeholder="Description..." />
           <InputWrapper>
-
             <StyledLabel for="cost">Cost</StyledLabel>
             <InputCost
               name="cost"
@@ -175,7 +192,7 @@ const AddNew = () => {
             onChange={handleChange}
           />
         </FormWrapper>
-        <PrimaryBtn content="Submit" type="submit"/>
+        <PrimaryBtn content="Submit" type="submit" />
       </StyledForm>
       {/* <form
         onSubmit={handleSubmit}
