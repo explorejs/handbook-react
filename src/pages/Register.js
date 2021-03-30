@@ -1,8 +1,39 @@
 import React, { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
+import styled from 'styled-components';
 
 // Components
-import Heading1 from "../components/Heading1"
+import Heading1 from '../components/Heading1'
+import PrimaryBtn from '../components/PrimaryBtn'
+
+
+const StyledForm = styled.form`
+  max-width: 35rem;
+`
+
+const FormWrapper = styled.div`
+  margin: 2rem 0rem;
+  display: flex;
+  flex-direction: column;
+`
+
+const StyledLabel = styled.label`
+  margin: 1.3rem 0rem -0.5rem 0rem;
+  color: ${props => props.theme.smallText};
+`
+
+const StyledInput = styled.input`
+  width: 100%;
+  padding: 12px 12px;
+  margin-top: 1rem;
+  background-color: ${props => props.theme.bgSide};
+  color: ${props => props.theme.mainText};
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 2%);
+`
+
 
 const RegisterPage = () => {
   const { signOut, signUp, user } = useAuth();
@@ -51,36 +82,32 @@ const RegisterPage = () => {
   return (
     <>
       <Heading1 content="Create an account" />
-      <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-        }}
+      <StyledForm
         onSubmit={handleSubmit}
       >
         <p style={{ color: "red" }}>{state.errMsg && state.errMsg}</p>
-        <label style={{ width: "100px" }}>
-          Email
-          <input
+        <FormWrapper>
+          <StyledLabel for="email">Email</StyledLabel>
+          <StyledInput 
             name="email"
             onChange={handleChange}
             placeholder="alex@gmail.com"
             type="text"
             value={state.email}
           />
-        </label>
-        <label style={{ width: "100px" }}>
-          Password
-          <input
+
+          <StyledLabel for="password">Password</StyledLabel>
+          <StyledInput 
             name="password"
             onChange={handleChange}
             placeholder="$eCUre"
             type="password"
             value={state.password}
           />
-        </label>
-        <button style={{ width: "100px" }}>Register</button>
-      </form>
+
+        </FormWrapper>
+        <PrimaryBtn content="Register" />
+      </StyledForm>
     </>
   );
 };

@@ -145,7 +145,7 @@ const AddNew = () => {
               value={state.name_last}
               placeholder="Author's last name"
               onChange={handleChange}
-            />
+            /> 
 
           <StyledLabel for="desc">Description</StyledLabel>
           <StyledTextarea name="desc" placeholder="Description..."/>
