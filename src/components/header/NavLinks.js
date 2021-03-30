@@ -64,7 +64,7 @@ const NavLinks = () => {
           <LinkText> Home </LinkText>
         </NavLink>
 
-        <NavLink exact to="#">
+        <NavLink exact to="/add" activeStyle={{ color: "#1A3B79" }}>
           <LinkText>Add New</LinkText>
         </NavLink>
 
@@ -76,7 +76,7 @@ const NavLinks = () => {
           <LinkText>Shared</LinkText>
         </NavLink>
 
-        <NavLink exact to="/login">
+        <NavLink exact to="/login" activeStyle={{ color: "#1A3B79" }}>
           <LinkText>Log In</LinkText>
         </NavLink>
       </FirstBox>

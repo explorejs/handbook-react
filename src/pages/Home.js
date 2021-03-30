@@ -1,21 +1,17 @@
 import React from "react";
-import styled from "styled-components";
 import { useAuth } from "../hooks/useAuth";
-import ContentRow from "../components/ContentRow";
 
-const Title = styled.h1`
-  color: ${(props) => props.theme.headingBlue};
-`;
+// Components
+import ContentRow from "../components/ContentRow";
+import Heading1 from "../components/Heading1";
 
 const Home = ({ data, theme }) => {
   const { profile, toggleFavorite } = useAuth();
-  //
   const { favorites = {} } = profile;
   return (
     <div>
-      <Title>Handbook.Dev</Title>
+      <Heading1 content="Handbook.Dev" />
       {/* Search component with filtering & title search */}
-
       <ul>
         {data.map((resource) => (
           <ContentRow
