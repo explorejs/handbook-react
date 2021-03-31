@@ -110,7 +110,12 @@ const AddNew = ({ updateKey }) => {
           },
           desc: state.desc,
           cost: state.cost,
-          tags: [state.tags],
+          tags:
+            state.tags
+              .trim()
+              .split(" ")
+              .map((item) => item.toLowerCase().trim().replace(",", ""))
+              .filter((x) => x) || [],
           url: state.url,
         }),
       })
@@ -141,7 +146,7 @@ const AddNew = ({ updateKey }) => {
       <Heading1 content="Add New Resource" />
       <StyledForm onSubmit={handleSubmit}>
         <FormWrapper>
-          <StyledLabel for="title">Title</StyledLabel>
+          <StyledLabel htmlFor="title">Title</StyledLabel>
           <StyledInput
             name="title"
             value={state.title}
@@ -149,7 +154,7 @@ const AddNew = ({ updateKey }) => {
             onChange={handleChange}
           />
 
-          <StyledLabel for="name_first">Author's first name</StyledLabel>
+          <StyledLabel htmlFor="name_first">Author's first name</StyledLabel>
           <StyledInput
             name="name_first"
             value={state.name_first}
@@ -157,7 +162,7 @@ const AddNew = ({ updateKey }) => {
             onChange={handleChange}
           />
 
-          <StyledLabel for="name_last">Author's last name</StyledLabel>
+          <StyledLabel htmlFor="name_last">Author's last name</StyledLabel>
           <StyledInput
             name="name_last"
             value={state.name_last}
@@ -165,10 +170,10 @@ const AddNew = ({ updateKey }) => {
             onChange={handleChange}
           />
 
-          <StyledLabel for="desc">Description</StyledLabel>
+          <StyledLabel htmlFor="desc">Description</StyledLabel>
           <StyledTextarea name="desc" placeholder="Description..." />
           <InputWrapper>
-            <StyledLabel for="cost">Cost</StyledLabel>
+            <StyledLabel htmlFor="cost">Cost</StyledLabel>
             <InputCost
               name="cost"
               value={state.cost}
@@ -176,7 +181,7 @@ const AddNew = ({ updateKey }) => {
               onChange={handleChange}
             />
 
-            <StyledLabel for="url">URL</StyledLabel>
+            <StyledLabel htmlFor="url">URL</StyledLabel>
             <StyledInput
               name="url"
               value={state.url}
@@ -184,7 +189,7 @@ const AddNew = ({ updateKey }) => {
               onChange={handleChange}
             />
           </InputWrapper>
-          <StyledLabel for="tags">Tags</StyledLabel>
+          <StyledLabel htmlFor="tags">Tags</StyledLabel>
           <StyledInput
             name="tags"
             value={state.tags}
