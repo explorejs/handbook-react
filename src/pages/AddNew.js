@@ -104,8 +104,6 @@ const AddNew = ({ updateKey }) => {
   };
   const [state, setState] = useState(initialState);
 
-  console.log(state.tags);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState((s) => ({ ...s, [name]: value }));
