@@ -159,19 +159,11 @@ const AddNew = ({ updateKey }) => {
 
           <StyledLabel for="name_last">Author's last name</StyledLabel>
           <StyledInput
-<<<<<<< HEAD
-              name="name_last"
-              value={state.name_last}
-              placeholder="Author's last name"
-              onChange={handleChange}
-            /> 
-=======
             name="name_last"
             value={state.name_last}
             placeholder="Author's last name"
             onChange={handleChange}
           />
->>>>>>> 38d9ca8a199019830d16f2cb4d253bf260522953
 
           <StyledLabel for="desc">Description</StyledLabel>
           <StyledTextarea name="desc" placeholder="Description..." />
