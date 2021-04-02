@@ -51,6 +51,18 @@ const InputCost = styled(StyledInput)`
   margin-right: 0.9rem;
 `;
 
+const StyledSelect = styled.select`
+  background-color: ${(props) => props.theme.bgSide};
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 2%);
+  color: ${(props) => props.theme.mainText};
+  font-size: 14px;
+  margin-top: 1rem;
+  padding: 12px 12px;
+  width: 150px;
+`;
+
 const StyledTextarea = styled.textarea`
   resize: none;
   width: 100%;
@@ -71,7 +83,12 @@ const InputWrapper = styled.div`
 `;
 
 const AddNew = ({ updateKey }) => {
-  const [state, setState] = useState({
+  const serverUrl =
+    process.env.NODE_ENV === "production"
+      ? process.env.REACT_APP_SERVER_BASE_URL
+      : "http://localhost:8000";
+
+  const initialState = {
     title: "",
     author: "",
     name_first: "",
@@ -80,16 +97,47 @@ const AddNew = ({ updateKey }) => {
     cost: "",
     status: "active",
     tags: "",
+    tagIdea: "",
+    tagIdeaMsg: "",
+    tagIdeaSubmitted: false,
     url: "",
-  });
+  };
+  const [state, setState] = useState(initialState);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState((s) => ({ ...s, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const newTagIdea = async (e) => {
     e.preventDefault();
+    if (state.tagIdea) {
+      await fetch(`${serverUrl}/tags`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tag: state.tagIdea }),
+      })
+        .then((res) => {
+          setState((s) => ({
+            ...s,
+            tagIdeaMsg: "thanks!",
+            tagIdeaSubmitted: true,
+            tagIdea: "",
+          }));
+        })
+        .catch((e) => {
+          console.error(e);
+          setState((s) => ({ ...s, tagIdeaMsg: JSON.stringify(e) }));
+        });
+    } else {
+      setState((s) => ({ ...s, tagIdeaMsg: "Please enter the tag " }));
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
       const token = await auth.currentUser.getIdToken();
       const serverUrl =
@@ -109,13 +157,8 @@ const AddNew = ({ updateKey }) => {
             name_last: state.name_last,
           },
           desc: state.desc,
-          cost: state.cost,
-          tags:
-            state.tags
-              .trim()
-              .split(" ")
-              .map((item) => item.toLowerCase().trim().replace(",", ""))
-              .filter((x) => x) || [],
+          cost: Number(state.cost),
+          tags: [state.tags],
           url: state.url,
         }),
       })
@@ -125,17 +168,7 @@ const AddNew = ({ updateKey }) => {
         updateKey();
         console.dir(result);
         // TODO: Create a success view before resetting the form
-        setState({
-          title: "",
-          author: "",
-          name_first: "",
-          name_last: "",
-          desc: "",
-          cost: "",
-          status: "active",
-          tags: "",
-          url: "",
-        });
+        setState(initialState);
       }
     } catch (e) {
       console.error(e);
@@ -148,6 +181,7 @@ const AddNew = ({ updateKey }) => {
         <FormWrapper>
           <StyledLabel htmlFor="title">Title</StyledLabel>
           <StyledInput
+            required
             name="title"
             value={state.title}
             placeholder="Title"
@@ -157,6 +191,7 @@ const AddNew = ({ updateKey }) => {
           <StyledLabel htmlFor="name_first">Author's first name</StyledLabel>
           <StyledInput
             name="name_first"
+            required
             value={state.name_first}
             placeholder="Author's first name"
             onChange={handleChange}
@@ -165,17 +200,24 @@ const AddNew = ({ updateKey }) => {
           <StyledLabel htmlFor="name_last">Author's last name</StyledLabel>
           <StyledInput
             name="name_last"
+            required
             value={state.name_last}
             placeholder="Author's last name"
             onChange={handleChange}
           />
 
           <StyledLabel htmlFor="desc">Description</StyledLabel>
-          <StyledTextarea name="desc" placeholder="Description..." />
+          <StyledTextarea
+            name="desc"
+            onChange={handleChange}
+            placeholder="Description..."
+            required
+          />
           <InputWrapper>
             <StyledLabel htmlFor="cost">Cost</StyledLabel>
             <InputCost
               name="cost"
+              required
               value={state.cost}
               placeholder="Cost"
               onChange={handleChange}
@@ -184,66 +226,44 @@ const AddNew = ({ updateKey }) => {
             <StyledLabel htmlFor="url">URL</StyledLabel>
             <StyledInput
               name="url"
+              required
               value={state.url}
               placeholder="URL"
               onChange={handleChange}
             />
           </InputWrapper>
           <StyledLabel htmlFor="tags">Tags</StyledLabel>
-          <StyledInput
-            name="tags"
-            value={state.tags}
-            placeholder="Tags"
-            onChange={handleChange}
-          />
+          <StyledSelect name="tags" onChange={handleChange}>
+            <option value="">Choose Tag</option>
+            <option value="html">html</option>
+            <option value="css">css</option>
+            <option value="javascript">javascript</option>
+            <option value="data-structures">data structures</option>
+            <option value="scss">sass</option>
+            <option value="react">react</option>
+            <option value="vue">vue</option>
+            <option value="hooks">hooks</option>
+          </StyledSelect>
         </FormWrapper>
         <PrimaryBtn content="Submit" type="submit" />
       </StyledForm>
-      {/* <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", maxWidth: "250px" }}
-      >
-        <label style={{ display: "flex", flexDirection: "column" }}>
-          Title
-          <input name="title" value={state.title} onChange={handleChange} />
-        </label>
-        <label style={{ display: "flex", flexDirection: "column" }}>
-          Author First Name
-          <input
-            name="name_first"
-            value={state.name_first}
-            onChange={handleChange}
-          />
-        </label>
-        <label style={{ display: "flex", flexDirection: "column" }}>
-          Author Last Name
-          <input
-            name="name_last"
-            value={state.name_last}
-            onChange={handleChange}
-          />
-        </label>
-        <label style={{ display: "flex", flexDirection: "column" }}>
-          desc
-          <input name="desc" value={state.desc} onChange={handleChange} />
-        </label>
-        <label style={{ display: "flex", flexDirection: "column" }}>
-          Cost
-          <input name="cost" value={state.cost} onChange={handleChange} />
-        </label>
-        <label style={{ display: "flex", flexDirection: "column" }}>
-          tags
-          <input name="tags" value={state.tags} onChange={handleChange} />
-        </label>
-        <label style={{ display: "flex", flexDirection: "column" }}>
-          URL
-          <input name="url" value={state.url} onChange={handleChange} />
-        </label>
-        <label>
-          <button type="submit">Submit</button>
-        </label>
-        <PrimaryBtn content={'Submit'}/>
-      </form> */}
+      <br />
+      <br />
+      <StyledForm onSubmit={newTagIdea}>
+        <label>Have a tag suggestion?</label>
+        <p style={{ color: "tomato" }}>{state.tagIdeaMsg}</p>
+        <StyledInput
+          name="tagIdea"
+          value={state.tagIdea}
+          placeholder="tag idea"
+          onChange={handleChange}
+        />
+        <PrimaryBtn
+          content="Submit Tag"
+          type="submit"
+          disabled={!state.tagIdea}
+        />
+      </StyledForm>
     </div>
   );
 };
