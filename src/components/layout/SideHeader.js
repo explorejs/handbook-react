@@ -11,6 +11,7 @@ import ModeToggle from "../header/ModeToggle"
 
 const SideNav = styled.nav`
     height: 100vh;
+    max-width: 20rem;
 
     padding-top: 4.5rem;
     padding-bottom: 2rem;

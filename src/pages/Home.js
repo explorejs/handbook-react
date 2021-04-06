@@ -4,6 +4,7 @@ import { useAuth } from "../hooks/useAuth";
 // Components
 import ContentRow from "../components/ContentRow";
 import Heading1 from "../components/Heading1";
+import Card from '../components/Card'
 
 const Home = ({ data, theme }) => {
   const { profile, toggleFavorite } = useAuth();
@@ -23,6 +24,7 @@ const Home = ({ data, theme }) => {
           />
         ))}
       </ul>
+      <Card />
     </div>
   );
 };

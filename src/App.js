@@ -67,7 +67,7 @@ const App = () => {
   const DocumentBody = styled.div`
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: auto;
   `;
 
   return (
