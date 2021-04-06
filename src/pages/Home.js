@@ -4,7 +4,7 @@ import { useAuth } from "../hooks/useAuth";
 // Components
 import ContentRow from "../components/ContentRow";
 import Heading1 from "../components/Heading1";
-import Card from '../components/Card'
+import Card from '../components/Item/Card'
 
 const Home = ({ data, theme }) => {
   const { profile, toggleFavorite } = useAuth();
