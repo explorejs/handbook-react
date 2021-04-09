@@ -18,12 +18,10 @@ const StyledBtn = styled.button`
     }
 `
 
-const PrimaryBtn = ({content}) => {
-    return (
+const PrimaryBtn = ({content}) => 
         <StyledBtn>
             {content}
         </StyledBtn>
-    )
-}
+    
 
 export default PrimaryBtn
