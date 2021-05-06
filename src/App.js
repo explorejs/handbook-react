@@ -74,9 +74,9 @@ const App = () => {
     <AuthProvider>
       <Router>
         {/* <Header toggleTheme={toggleTheme} theme={theme} /> */}
-        <ThemeProvider theme = {state.currentTheme}>
+        <ThemeProvider theme={state.currentTheme}>
           <DocumentBody>
-            <SideHeader  toggleTheme = {toggleTheme}/> 
+            <SideHeader toggleTheme={toggleTheme} />
             <Main theme={theme}>
               <Switch>
                 <Route path="/about">
