@@ -6,8 +6,8 @@ import ContentRow from "../components/ContentRow";
 import Heading1 from "../components/Heading1";
 
 const Home = ({ data, theme }) => {
-  const { profile, toggleFavorite } = useAuth();
-  const { favorites = {} } = profile;
+  const { favorites, toggleFavorite } = useAuth();
+
   return (
     <div>
       <Heading1 content="Handbook.Dev" />
