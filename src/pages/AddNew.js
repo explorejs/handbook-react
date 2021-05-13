@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { auth } from "../adapters/firebase";
+import { useAuth } from "../hooks/useAuth";
 import styled from "styled-components";
 
 // Components
 import PrimaryBtn from "../components/PrimaryBtn";
 import Heading1 from "../components/Heading1";
+import { Link } from "react-router-dom";
 
 const newRecord = {
   title: "some string",
@@ -83,6 +85,7 @@ const InputWrapper = styled.div`
 `;
 
 const AddNew = ({ updateKey }) => {
+  const { profile } = useAuth();
   const serverUrl =
     process.env.NODE_ENV === "production"
       ? process.env.REACT_APP_SERVER_BASE_URL
@@ -140,10 +143,6 @@ const AddNew = ({ updateKey }) => {
     event.preventDefault();
     try {
       const token = await auth.currentUser.getIdToken();
-      const serverUrl =
-        process.env.NODE_ENV === "production"
-          ? process.env.REACT_APP_SERVER_BASE_URL
-          : "http://localhost:8000";
       const result = await fetch(`${serverUrl}/mongo/new`, {
         method: "POST",
         headers: {
@@ -174,6 +173,19 @@ const AddNew = ({ updateKey }) => {
       console.error(e);
     }
   };
+
+  if (!profile.uid) {
+    return (
+      <div>
+        <Heading1 content="Add New Resource" />
+        <div style={{ height: "200px" }} />
+        <p style={{ margin: "1rem 0" }}>
+          Please login first so we can help you save your history and favorites
+        </p>
+        <Link to="/login">Log In</Link>
+      </div>
+    );
+  }
   return (
     <div>
       <Heading1 content="Add New Resource" />
