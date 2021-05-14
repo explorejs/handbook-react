@@ -22,7 +22,7 @@ const Home = ({ data, theme }) => {
             favorite={favorites[resource._id]}
             toggleFavorite={toggleFavorite}
           />
-        ))} */}
+        ))} */} 
         {data.map((resource) => (
           <Card
             resource={resource}

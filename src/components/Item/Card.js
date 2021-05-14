@@ -64,7 +64,6 @@ const Text = styled.p`
 `
 
 const Card = ({ favorite, resource, theme, toggleFavorite }) => {
-    console.log(resource)
 
     return (
         <Wrapper key={resource._id}>

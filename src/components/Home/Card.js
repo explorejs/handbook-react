@@ -13,9 +13,9 @@ const Card = ({ favorite, resource, theme, toggleFavorite }) => {
 
     return (
         <Wrapper key={resource._id}>
-            <Flexbox>
-                <a href={resource.url}><h3>{resource.title}</h3></a>
-                <Bookmark favorite={favorite} />
+            <Flexbox> 
+                <a href={resource.url} target="_blank"><h3>{resource.title}</h3></a>
+                <Bookmark favorite={favorite} toggleFavorite={toggleFavorite} resource={resource}/>
             </Flexbox>
             <div>
                 <p><span>March 23, 2021</span></p>
@@ -41,14 +41,14 @@ const Wrapper = styled.div`
     width: 100%;
     height: auto;
     background-color: ${props => props.theme.bgSide};
-    padding: 30px 50px;
-    margin: 20px 0px;
+    padding: 40px 50px;
+    margin: 30px 0px;
     border-radius: 16px;
     box-shadow: 1px 1px 10px 8px rgba(0, 0, 0, 0.5%);
     transition: all 0.4s ease;
 
     &:hover{
-        transform: scale(1.01, 1.01);
+        /* transform: scale(1.01, 1.01); */
         cursor: pointer;
         box-shadow: 1px 1px 13px 8px rgba(0, 0, 0, 1%);
     }
