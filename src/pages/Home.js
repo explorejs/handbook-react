@@ -7,15 +7,24 @@ import Heading1 from "../components/Heading1";
 import Card from '../components/Item/Card'
 
 const Home = ({ data, theme }) => {
-  const { profile, toggleFavorite } = useAuth();
-  const { favorites = {} } = profile;
+  const { favorites, toggleFavorite } = useAuth();
+
   return (
     <div>
       <Heading1 content="Handbook.Dev" />
       {/* Search component with filtering & title search */}
       <ul>
-        {data.map((resource) => (
+        {/* {data.map((resource) => (
           <ContentRow
+            resource={resource}
+            key={resource._id}
+            theme={theme}
+            favorite={favorites[resource._id]}
+            toggleFavorite={toggleFavorite}
+          />
+        ))} */}
+        {data.map((resource) => (
+          <Card
             resource={resource}
             key={resource._id}
             theme={theme}
@@ -24,7 +33,7 @@ const Home = ({ data, theme }) => {
           />
         ))}
       </ul>
-      <Card />
+      {/* <Card /> */}
     </div>
   );
 };

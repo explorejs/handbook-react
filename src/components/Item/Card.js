@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import bookmark from '../../images/bookmark.svg'
 import comment from '../../images/comment.svg'
 
+
 // Components
 import Rating from './Rating'
 import Tag from './Tag'
@@ -13,6 +14,7 @@ const Wrapper = styled.div`
     height: auto;
     background-color: ${props => props.theme.bgSide};
     padding: 2rem 3rem;
+    margin: 20px 0px;
     border-radius: 16px;
     box-shadow: 1px 1px 10px 8px rgba(0, 0, 0, 1%);
     transition: all 0.4s ease;
@@ -36,7 +38,7 @@ const Flexbox = styled.div`
     justify-content: ${props => props.jusCenter && 'center'};
     align-items: space-between;
     margin-left: ${props => props.ml && '2rem'};
-    margin-top: ${props => props.mt && '1rem'};
+    margin-top: ${props => props.mt && '0.5rem'};
 `
 
 const SVG = styled.svg`
@@ -45,8 +47,13 @@ const SVG = styled.svg`
 `
 const Icon = styled.img`
     width: 15px;
-    height: auto;
+    height: 15px;
+    height: ${props => props.autoH && 'auto'};
+
+    width: ${props => props.bookmark && '18px'};
+    height: ${props => props.bookmark && 'auto'};
     cursor: pointer;
+    margin-right: ${props => props.mR && '0.7rem'};
 `
 
 
@@ -56,28 +63,30 @@ const Text = styled.p`
   line-height: 1.2;
 `
 
-const Card = (props) => {
+const Card = ({ favorite, resource, theme, toggleFavorite }) => {
+    console.log(resource)
+
     return (
-        <Wrapper>
+        <Wrapper key={resource._id}>
             <Flexbox spaceBetween>
-                <h3>Exercism</h3> 
-                <Icon src={bookmark} />
+                <a href={resource.url}><h3>{resource.title}</h3> </a>
+                <Icon autoH bookmark src={bookmark} />
             </Flexbox>
             <div>
                 <Text small>March 23, 2021</Text>
                 <Text small>Shared by Nick Folden</Text>
             </div>
 
-            <Flexbox flexStart>
+            {/* <Flexbox flexStart>
                 <Flexbox>
                     <Rating />
-                    <Text small>203 reviews</Text>
+                    <Text small>203 reviews</Text> 
                 </Flexbox>
                 <Flexbox ml>
-                    <Icon src={comment} />
+                    <Icon mR src={comment} />
                     <Text small>109 comments</Text>
                 </Flexbox>
-            </Flexbox>
+            </Flexbox> */}
             <Text>Best platform to practice your skills, solve problems, get mentor feedback, and learn more about testing.</Text>
 
             <Flexbox mt flexStart>
