@@ -75,13 +75,14 @@ const Flexbox = styled.div`
     align-items: center;
     justify-content: space-between;
     justify-content: ${ props => props.flexStart && "flex-start"};
+    transition: all 0.3s ease-in;
 
     h3 {
         color: ${ props => props.theme.headingBlue};
         font-size: 22px;
 
         &:hover {
-            color: ${ props => props.theme.heading};
+            color:  ${ props => props.theme.blueHover };
         }
     }
 `

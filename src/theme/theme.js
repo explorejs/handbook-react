@@ -8,6 +8,7 @@ export const lightTheme = {
   smallText: "rgba(0, 0, 0, 35%)",
   link: "#1A3B79",
   beforePosition: "5px",
+  blueHover: 'rgba(26, 59, 121, 0.50)',
 };
 
 export const darkTheme = {
@@ -20,6 +21,7 @@ export const darkTheme = {
     smallText: 'rgba(200, 200, 200, 80%)',
     link: '#86A1D3',
     beforePosition: '20px',
+    blueHover: 'rgba(134, 161, 211, 0.59)',
 }
 
 // For reference 
