@@ -80,14 +80,20 @@ export default SideHeader;
 
 const SideNav = styled.div`
   height: auto;
-  width: 250px;
+  width: 270px;
 
+  display: flex;
+  justify-content: center;
+  background: red;
+  background-color: ${(props) => props.theme.bgSide};
 `;
 
 const Fixed = styled.nav`
-  height: 100vh;
+  width: 270px;
+
   padding-top: 4.5rem;
   padding-bottom: 2rem;
+  height: 100vh;
   position: fixed;
   display: flex;
   flex-direction: column;

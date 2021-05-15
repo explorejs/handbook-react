@@ -80,6 +80,7 @@ const Flexbox = styled.div`
     h3 {
         color: ${ props => props.theme.headingBlue};
         font-size: 22px;
+        transition: all 0.3s ease;
 
         &:hover {
             color:  ${ props => props.theme.blueHover };
@@ -92,6 +93,6 @@ const Author = styled.a`
     color: ${ props => props.theme.headingBlue};
 
     &:hover {
-        color: ${ props => props.theme.mainText};
+        color:  ${ props => props.theme.blueHover };
     }
 `
