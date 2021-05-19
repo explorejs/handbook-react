@@ -5,7 +5,7 @@ const Box = styled.span`
     padding: 0.5rem 0.7rem;
     margin: 0.5rem 1rem 0rem 0rem;
     min-width: 3rem;
-    background-color: #E3EAD5;
+    background-color: ${ props => props.theme.bgMain};
     border-radius: 8px;
     font-size: 12px;
     text-align: center;

@@ -8,9 +8,17 @@ import Rating from "./Rating"
 import Comments from "./Comments"
 
 const Card = ({ favorite, resource, theme, toggleFavorite }) => {
-    console.log(resource)
     const tags = resource.tags;
+    const fName = resource.author.name_first
+    const lName = resource.author.name_last
+    
+    let formattedDate = new Date(resource.ts);
+    formattedDate = formattedDate.toString()
+    let m = formattedDate.substring(4, 7)
+    let d = formattedDate.substring(8, 10)
+    let y = formattedDate.substring(11, 15) 
 
+    
     return (
         <Wrapper key={resource._id}>
             <Flexbox> 
@@ -18,8 +26,8 @@ const Card = ({ favorite, resource, theme, toggleFavorite }) => {
                 <Bookmark favorite={favorite} toggleFavorite={toggleFavorite} resource={resource}/>
             </Flexbox>
             <div>
-                <p><span>March 23, 2021</span></p>
-                <p><span>Shared by <Author>Nick Folden</Author></span></p>
+                <p><span>{m} {d},  {y}</span></p>
+                <p><span>Author: <Author>{fName} {lName}</Author></span></p>
             </div>
             <p>{resource.desc}</p>
             <Flexbox flexStart>
@@ -48,8 +56,6 @@ const Wrapper = styled.div`
     transition: all 0.4s ease;
 
     &:hover{
-        /* transform: scale(1.01, 1.01); */
-        cursor: pointer;
         box-shadow: 1px 1px 13px 8px rgba(0, 0, 0, 1%);
     }
 
@@ -92,7 +98,7 @@ const Author = styled.a`
     font-size: 14px;
     color: ${ props => props.theme.headingBlue};
 
-    &:hover {
+    /* &:hover {
         color:  ${ props => props.theme.blueHover };
-    }
+    } */
 `

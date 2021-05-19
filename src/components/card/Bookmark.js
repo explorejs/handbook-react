@@ -32,6 +32,7 @@ const SVG = styled.svg`
     width: 24px;
     fill: #E2E1E1;
     transition: all 0.3s ease-in;
+    cursor: pointer;
 
     &:hover {
         fill: rgba(26, 59, 121, 0.50);
