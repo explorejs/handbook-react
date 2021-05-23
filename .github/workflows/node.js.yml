@@ -25,7 +25,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
       env:
         REACT_APP_SERVER_BASE_URL: "abc" 
-        REACT_APP_FB_API_KEY: "abc" 
+        REACT_APP_FB_API_KEY: "abc123abc123abc123abc123abc123abc123abc"                    
         REACT_APP_FB_AUTH_DOMAIN: "abc" 
         REACT_APP_FB_DATABASE_URL: "abc" 
         REACT_APP_FB_PROJECT_ID: "abc" 
