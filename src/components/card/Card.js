@@ -26,13 +26,13 @@ const Card = ({ favorite, resource, theme, toggleFavorite }) => {
                 <Bookmark favorite={favorite} toggleFavorite={toggleFavorite} resource={resource}/>
             </Flexbox>
             <div>
-                <p><span>{m} {d},  {y}</span></p>
+                <p><span>Added on {m} {d},  {y}</span></p>
                 <p><span>Author: <Author>{fName} {lName}</Author></span></p>
             </div>
             <p>{resource.desc}</p>
             <Flexbox flexStart>
                 {tags.map( tag => (
-                    <Tag content={tag} />
+                    <Tag content={tag} key={tag} />
                 ))}
             </Flexbox>
             {/* <Flexbox flexStart>

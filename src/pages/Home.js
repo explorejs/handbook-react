@@ -14,15 +14,6 @@ const Home = ({ data, theme }) => {
       <Heading1 mgL content="Handbook.Dev" />
       {/* Search component with filtering & title search */}
       <ul>
-        {/* {data.map((resource) => (
-          <ContentRow
-            resource={resource}
-            key={resource._id}
-            theme={theme}
-            favorite={favorites[resource._id]}
-            toggleFavorite={toggleFavorite}
-          />
-        ))} */} 
         {data.map((resource) => (
           <Card
             resource={resource}
