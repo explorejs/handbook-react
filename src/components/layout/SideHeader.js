@@ -11,19 +11,6 @@ import Copyright from "../header/Copyright";
 import ButtonLeft from "../header/ButtonLeft";
 import ModeToggle from "../header/ModeToggle";
 
-const SideNav = styled.nav`
-  height: 100vh;
-
-  padding-top: 4.5rem;
-  padding-bottom: 2rem;
-  background-color: ${(props) => props.theme.bgSide};
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 250px;
-  box-shadow: 1px 1px 10px 8px rgba(0, 0, 0, 1%);
-`;
 
 const SideHeader = ({ toggleTheme }) => {
   const nodeRef = useRef();
@@ -75,14 +62,42 @@ const SideHeader = ({ toggleTheme }) => {
       onClick={handleSideBarClick}
     >
       <SideNav>
-        <UserInfo />
-        <NavLinks />
-        <ModeToggle toggleTheme={toggleTheme} />
-        <Copyright />
-        <ButtonLeft expanded={expanded} handleExpand={handleExpand} />
+        <Fixed>
+          <UserInfo />
+          <NavLinks />
+          <ModeToggle toggleTheme={toggleTheme} />
+          <Copyright />
+          <ButtonLeft expanded={expanded} handleExpand={handleExpand} />
+        </Fixed>
       </SideNav>
     </animated.div>
   );
 };
 
 export default SideHeader;
+
+
+
+const SideNav = styled.div`
+  height: auto;
+  width: 270px;
+
+  display: flex;
+  justify-content: center;
+  background: red;
+  background-color: ${(props) => props.theme.bgSide};
+`;
+
+const Fixed = styled.nav`
+  width: 270px;
+
+  padding-top: 4.5rem;
+  padding-bottom: 2rem;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${(props) => props.theme.bgSide};
+
+`

@@ -4,17 +4,18 @@ import { useAuth } from "../hooks/useAuth";
 // Components
 import ContentRow from "../components/ContentRow";
 import Heading1 from "../components/Heading1";
+import Card from "../components/card/Card"
 
 const Home = ({ data, theme }) => {
   const { favorites, toggleFavorite } = useAuth();
 
-  return (
+  return ( 
     <div>
-      <Heading1 content="Handbook.Dev" />
+      <Heading1 mgL content="Handbook.Dev" />
       {/* Search component with filtering & title search */}
       <ul>
         {data.map((resource) => (
-          <ContentRow
+          <Card
             resource={resource}
             key={resource._id}
             theme={theme}
