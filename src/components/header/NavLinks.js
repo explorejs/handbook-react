@@ -53,6 +53,7 @@ const LinkText = styled.p`
 
 const NavLinks = () => {
   const { signOut, user } = useAuth();
+  const loggedIn = user && user.uid ? true : false
   return (
     <Container>
       <FirstBox>
@@ -75,10 +76,16 @@ const NavLinks = () => {
         <NavLink exact to="#">
           <LinkText>Shared</LinkText>
         </NavLink>
-
-        <NavLink exact to="/login" activeStyle={{ color: "#1A3B79" }}>
-          <LinkText>Log In</LinkText>
-        </NavLink>
+        {!loggedIn && (
+          <>
+            <NavLink exact to="/register" activeStyle={{ color: "#1A3B79" }}>
+              <LinkText>Register</LinkText>
+            </NavLink>
+            <NavLink exact to="/login" activeStyle={{ color: "#1A3B79" }}>
+              <LinkText>Log In</LinkText>
+            </NavLink>{" "}
+          </>
+        )}
       </FirstBox>
 
       <SecondBox>
