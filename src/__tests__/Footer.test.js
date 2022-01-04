@@ -8,7 +8,7 @@ describe("test Footer", () => {
   test("correct year & explore js in footer", () => {
     const { getByText } = render(<Footer theme={THEME["light"]} />);
     expect(getByText("ExploreJS")).toBeTruthy();
-    expect(getByText("© 2021")).toBeTruthy();
+    expect(getByText("© 2022")).toBeTruthy();
   });
 
   it("renders correctly", () => {
