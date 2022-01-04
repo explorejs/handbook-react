@@ -27,7 +27,7 @@ exports[`test Footer renders correctly 1`] = `
        ExploreJS 
     </span>
     © 
-    2021
+    2022
   </p>
 </footer>
 `;
